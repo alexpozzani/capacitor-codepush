@@ -29,11 +29,11 @@
   "author": "MAPIACOMPANY",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor-community/http": "^1.0.0",
-    "@capacitor/cli": "^3.0.0",
-    "@capacitor/device": "^1.0.0",
-    "@capacitor/dialog": "^1.0.0",
-    "@capacitor/filesystem": "^1.0.0",
+    "@capacitor/core": "^5.4.1",
+    "@capacitor/cli": "^5.4.1",
+    "@capacitor/device": "^5.0.0",
+    "@capacitor/dialog": "^5.0.0",
+    "@capacitor/filesystem": "^5.1.0",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@rollup/plugin-node-resolve": "^11.1.0",
@@ -69,11 +69,10 @@
     "code-push": "^4.0.2"
   },
   "peerDependencies": {
-    "@capacitor-community/http": "^1.0.0",
-    "@capacitor/core": "^3.0.0",
-    "@capacitor/device": "^1.0.0",
-    "@capacitor/dialog": "^1.0.0",
-    "@capacitor/filesystem": "^1.0.0"
+    "@capacitor/core": "^5.4.1",
+    "@capacitor/device": "^5.0.0",
+    "@capacitor/dialog": "^5.0.0",
+    "@capacitor/filesystem": "^5.1.0"
   },
   "capacitor": {
     "android": {

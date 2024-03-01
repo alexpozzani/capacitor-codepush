@@ -63,6 +63,9 @@ With the Capacitor plugin installed, configure your app to use it via the follow
           "ANDROID_DEPLOY_KEY": "ANDROID_DEPLOYMENT_KEY",
           "ANDROID_PUBLIC_KEY": "APP_SECRET_KEY",
           "SERVER_URL": "https://codepush.appcenter.ms/"
+        },
+        "CapacitorHttp": {
+            "enabled": true
         }
     }
     ```

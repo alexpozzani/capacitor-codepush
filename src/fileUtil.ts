@@ -1,4 +1,5 @@
 import { Directory, GetUriOptions, Filesystem, Encoding } from "@capacitor/filesystem";
+import { type } from "os";
 import { Callback } from "./callbackUtil";
 
 
@@ -10,7 +11,7 @@ export class FileUtil {
         try {
             const statResult = await Filesystem.stat({directory, path});
             // directory for Android, NSFileTypeDirectory for iOS
-            return statResult.type === "directory" || statResult.type === "NSFileTypeDirectory";
+            return statResult.type === "directory" || statResult.type === "file";
         } catch (error) {
             return false;
         }
@@ -24,7 +25,7 @@ export class FileUtil {
         try {
             const statResult = await Filesystem.stat({directory, path});
             // file for Android, NSFileTypeRegular for iOS
-            return statResult.type === "file" || statResult.type === "NSFileTypeRegular";
+            return statResult.type === "file" || statResult.type === "directory";
         } catch (error) {
             return false;
         }
@@ -72,7 +73,7 @@ export class FileUtil {
             const { files } = await Filesystem.readdir(sourceDir);
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
-                if (ignoreList.includes(file)) continue;
+                if (ignoreList.includes(file.name)) continue;
                 const sourcePath = sourceDir.path + "/" + file;
                 const destPath = destinationDir.path + "/" + file;
                 const source = { ...sourceDir, path: sourcePath };
@@ -131,7 +132,11 @@ export class FileUtil {
 
     public static async readFile(directory: Directory, path: string): Promise<string> {
         const result = await Filesystem.readFile({directory, path, encoding: Encoding.UTF8});
-        return result.data;
+        if (typeof(result.data) === 'string') {
+            return result.data;
+        }
+
+        return await result.data.text();
     }
 
     public static readDataFile(path: string): Promise<string> {
